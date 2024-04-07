@@ -1,0 +1,14 @@
+{% load static %}
+
+<!DOCTYPE html>
+    <html lang="en">
+    <link rel="stylesheet" href="{% static '/agendaStyle.css' %}">
+
+<head>
+    {% include "model-header.html" %} <!--aqui será incluido o header que virá do arquivo model-header-->
+</head>
+<body>
+    {% block content %} {% endblock content %} <!--aqui será incluido o body que virá do arquivo agenda-->
+    {% include "model-footer.html" %}<!--aqui será incluido o footer que virá do arquivo model-footer-->
+</body>
+</html>
