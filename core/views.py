@@ -32,3 +32,19 @@ def submit_login(request):
         else:
             messages.error(request, 'Usuario ou senha incorretos')
     return redirect('/')
+@login_required(login_url='/login/')
+def evento(request):
+    return render(request, 'evento.html')
+
+@login_required(login_url='/login/')
+def submit_evento(request):
+    if request.POST:
+        Titulo = request.POST['Titulo']
+        data_evento = request.POST['data_evento']
+        decricao = request.POST['decricao']
+        usuario = request.user
+        Evento.objects.create(Titulo=Titulo,
+                              data_evento=data_evento,
+                              decricao=decricao,
+                              usuario=usuario)
+    return redirect('/')
