@@ -9,9 +9,16 @@
     <div class="title">
         <ul>
             {% for evento in eventos %}
-                <li>{{ evento.Titulo }} - {{ evento.data_evento }}</li>
+                <li>{{ evento.titulo }} - {{ evento.data_evento }}
+                (<a href="evento/?id={{ evento.id }}">Editar</a>
+                / <a href="evento/delete/{{evento.id}}/">Excluir</a>)
+                </li>
+                {% if evento.local %} <!-- Verifica se há um local-->
+                    Local: {{ evento.local }}
+                    {% else %}
+                    Local: Indefinido
+                {% endif %}
             {% endfor %}
         </ul>
     </div>
 {%  endblock content %}
-
